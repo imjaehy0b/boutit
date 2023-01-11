@@ -5,15 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserDao {
-    UserDto selectUser(UserDto userDto) throws Exception;
 
-    UserDto selectUserByEmail(String userEmail) throws Exception;
+    //회원가입
+    public void join(UserDto userDto) throws Exception;
 
-    void insertUser(UserDto userDto) throws Exception;
+    //email중복체크
+    public int emailCheck(String email) throws Exception;
 
-    int deleteUser(String email) throws Exception;
-
-    int deleteAll() throws Exception;
-
-    int userCount() throws Exception;
+    //닉네임 중복체크
+    public int nickCheck(String nickname) throws Exception;
 }

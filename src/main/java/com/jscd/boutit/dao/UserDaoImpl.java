@@ -1,44 +1,37 @@
 package com.jscd.boutit.dao;
 
 import com.jscd.boutit.domain.UserDto;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
+    //마이바티스
     @Autowired
     private UserDao userDao;
 
-    @Override
-    public UserDto selectUser(UserDto userDto) throws Exception {
+    //매퍼
+//    private static String namespace = "com.jscd.boutit.mappers.userMapper.";
 
-        return userDao.selectUser(userDto);
+    //회원가입 쿼리
+    @Override
+    public void join(UserDto userDto) throws Exception {
+        userDao.join(userDto);
     }
 
+    //이메일 중복 체크 쿼리
     @Override
-    public UserDto selectUserByEmail(String userEmail) throws Exception {
-
-        return userDao.selectUserByEmail(userEmail);
+    public int emailCheck(String email) throws Exception {
+        return userDao.emailCheck(email);
     }
 
+    //닉네임 중복 체크
     @Override
-    public int deleteUser(String email) throws Exception {
-        return userDao.deleteUser(email);
-    }
+    public int nickCheck(String nickname) throws Exception {
 
-    @Override
-    public int deleteAll() throws Exception {
-        return userDao.deleteAll();
-    }
-
-    @Override
-    public void insertUser(UserDto userDto) throws Exception {
-        userDao.insertUser(userDto);
-    }
-
-    @Override
-    public int userCount() throws Exception {
-        return userDao.userCount();
+        return userDao.nickCheck(nickname);
     }
 }
