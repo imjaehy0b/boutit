@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserDao {
 
+
     //회원가입
     public void join(UserDto userDto) throws Exception;
 
@@ -14,4 +15,17 @@ public interface UserDao {
 
     //닉네임 중복체크
     public int nickCheck(String nickname) throws Exception;
+
+
+    UserDto selectUser(UserDto userDto) throws Exception;
+
+    UserDto selectUserByEmail(String userEmail) throws Exception;
+
+    void insertUser(UserDto userDto) throws Exception;
+
+    int deleteUser(String email) throws Exception;
+
+    int deleteAll() throws Exception;
+
+    int userCount() throws Exception;
 }

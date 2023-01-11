@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.Objects;
 
 public class UserDto {
+    private int id;
+
     @NotBlank
     @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$",
             message = "이메일 형식이 올바르지 않습니다.")
@@ -18,8 +20,6 @@ public class UserDto {
             message = "비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.")
     private String pwd;
 
-    @NotBlank(message = "비밀번호 확인은 필수 입력 값 입니다.")
-    private String pwd2;
 
     @NotBlank(message = "이름은 필수 입력 값 입니다.")
     private String name;
@@ -38,6 +38,9 @@ public class UserDto {
             message = "올바른 휴대폰 번호를 입력해주세요.")
     private String phone;
 
+
+
+
     private Date signup_date;
     private Date login_date;
     private Date pwd_chg_date;
@@ -48,13 +51,13 @@ public class UserDto {
     private String up_user;
 
 
+    public UserDto() {}
 
-    public UserDto(){}
+    public UserDto(int id, String email, String pwd, String name, String nickname, String birth, String phone, Date signup_date, Date login_date, Date pwd_chg_date, int state, Date in_date, String in_user, Date up_date, String up_user) {
 
-    public UserDto(String email, String pwd, String pwd2, String name, String nickname, String birth, String phone, Date signup_date, Date login_date, Date pwd_chg_date, int state, Date in_date, String in_user, Date up_date, String up_user) {
+        this.id = id;
         this.email = email;
         this.pwd = pwd;
-        this.pwd2 = pwd2;
         this.name = name;
         this.nickname = nickname;
         this.birth = birth;
@@ -69,38 +72,12 @@ public class UserDto {
         this.up_user = up_user;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserDto userDto = (UserDto) o;
-        return state == userDto.state && Objects.equals(email, userDto.email) && Objects.equals(pwd, userDto.pwd) && Objects.equals(pwd2, userDto.pwd2) && Objects.equals(name, userDto.name) && Objects.equals(nickname, userDto.nickname) && Objects.equals(birth, userDto.birth) && Objects.equals(phone, userDto.phone) && Objects.equals(signup_date, userDto.signup_date) && Objects.equals(login_date, userDto.login_date) && Objects.equals(pwd_chg_date, userDto.pwd_chg_date) && Objects.equals(in_date, userDto.in_date) && Objects.equals(in_user, userDto.in_user) && Objects.equals(up_date, userDto.up_date) && Objects.equals(up_user, userDto.up_user);
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(email, pwd, pwd2, name, nickname, birth, phone, signup_date, login_date, pwd_chg_date, state, in_date, in_user, up_date, up_user);
-    }
-
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "email='" + email + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", pwd2='" + pwd2 + '\'' +
-                ", name='" + name + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", birth='" + birth + '\'' +
-                ", phone='" + phone + '\'' +
-                ", signup_date=" + signup_date +
-                ", login_date=" + login_date +
-                ", pwd_chg_date=" + pwd_chg_date +
-                ", state=" + state +
-                ", in_date=" + in_date +
-                ", in_user='" + in_user + '\'' +
-                ", up_date=" + up_date +
-                ", up_user='" + up_user + '\'' +
-                '}';
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -117,14 +94,6 @@ public class UserDto {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
-    }
-
-    public String getPwd2() {
-        return pwd2;
-    }
-
-    public void setPwd2(String pwd2) {
-        this.pwd2 = pwd2;
     }
 
     public String getName() {
@@ -158,7 +127,6 @@ public class UserDto {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
 
     public Date getSignup_date() {
         return signup_date;
@@ -222,5 +190,39 @@ public class UserDto {
 
     public void setUp_user(String up_user) {
         this.up_user = up_user;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", birth='" + birth + '\'' +
+                ", phone='" + phone + '\'' +
+                ", signup_date=" + signup_date +
+                ", login_date=" + login_date +
+                ", pwd_chg_date=" + pwd_chg_date +
+                ", state=" + state +
+                ", in_date=" + in_date +
+                ", in_user='" + in_user + '\'' +
+                ", up_date=" + up_date +
+                ", up_user='" + up_user + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDto userDto = (UserDto) o;
+        return id == userDto.id && Objects.equals(email, userDto.email) && Objects.equals(pwd, userDto.pwd) && Objects.equals(name, userDto.name) && Objects.equals(nickname, userDto.nickname) && Objects.equals(birth, userDto.birth) && Objects.equals(phone, userDto.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, pwd, name, nickname, birth, phone);
     }
 }

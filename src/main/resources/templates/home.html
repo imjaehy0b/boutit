@@ -2,30 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<title>메인</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
-
-
 <body>
-  <form role="form" method="post" autocomplete="off">
-    <p><a href="/join">회원가입</a></p>
-    <!-- 네이버 로그인 버튼 노출 영역 -->
-      <div id="naver_id_login"></div>
-      <!-- //네이버 로그인 버튼 노출 영역 -->
-      <script type="text/javascript">
-        var naver_id_login = new naver_id_login("p30QOTgXJCO7UFH3g3PI", "http://localhost:8080/userNaverLogin");	// Client ID, CallBack URL 삽입
-        // 단 'localhost'가 포함된 CallBack URL
-        var state = naver_id_login.getUniqState();
-
-        naver_id_login.setButton("white", 2, 40);
-        naver_id_login.setDomain("http://localhost:8080/login");	//  URL
-        naver_id_login.setState(state);
-        naver_id_login.setPopup();
-        naver_id_login.init_naver_id_login();
-      </script>
-  </form>
+THIS IS HOME
+    <a th:if="${session.userDto eq null}" th:href="@{/login}">로그인</a>
+    <a th:if="${session.userDto ne null}" th:href="@{/logout}">로그아웃</a>
+    <a href="/join">회원가입</a>
 </body>
 </html>

@@ -45,9 +45,9 @@
 
         <div class="form-group">
             <label for="pwd2">비밀번호 확인</label>
-            <input type="password"  class="form-control" id="pwd2" name="pwd2" placeholder="비밀번호 확인"
-                   th:field="*{pwd2}" th:class="${#fields.hasErrors('pwd2')}? 'form-control fieldError' : 'form-control'">
-            <p th:if="${#fields.hasErrors('pwd2')}" th:errors="*{pwd2}">Incorrect date</p>
+            <input type="password"  class="form-control" id="pwd2" name="pwd2" placeholder="비밀번호 확인">
+<!--                   th:field="*{pwd2}" th:class="${#fields.hasErrors('pwd2')}? 'form-control fieldError' : 'form-control'">-->
+<!--            <p th:if="${#fields.hasErrors('pwd2')}" th:errors="*{pwd2}">Incorrect date</p>-->
             <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
             <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
         </div>

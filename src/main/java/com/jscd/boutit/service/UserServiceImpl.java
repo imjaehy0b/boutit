@@ -14,10 +14,9 @@ public class UserServiceImpl implements UserService {
     //회원가입
     @Override
     public void join(UserDto userDto) throws Exception {
-        //비밀번호 암호화해서 저장
-//                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//                dto.setPwd(passwordEncoder.encode(dto.getPwd()));
-
+    //비밀번호 암호화해서 저장
+    //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    //dto.setPwd(passwordEncoder.encode(dto.getPwd()));
         userDao.join(userDto);
     }
 
