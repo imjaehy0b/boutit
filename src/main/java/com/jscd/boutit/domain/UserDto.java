@@ -1,16 +1,46 @@
 package com.jscd.boutit.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.Objects;
 
 public class UserDto {
     private int id;
+
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$",
+            message = "이메일 형식이 올바르지 않습니다.")
     private String email;
+
+    @NotBlank
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}",
+            message = "비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.")
     private String pwd;
+
+
+    @NotBlank(message = "이름은 필수 입력 값 입니다.")
     private String name;
+
+    @NotBlank
+    @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-_]{2,13}$",
+            message = "닉네임은 특수문자를 제외한 2~13자리여야 합니다.")
     private String nickname;
+
+    @NotBlank
+    @DateTimeFormat(pattern = "yyyy-MM-dd")//문자열로 들어오는값을 데이터형으로 변환핋요
     private String birth;
+
+    @NotBlank
+    @Pattern(regexp = "(01[016789])(\\d{3,4})(\\d{4})",
+            message = "올바른 휴대폰 번호를 입력해주세요.")
     private String phone;
+
+
+
+
     private Date signup_date;
     private Date login_date;
     private Date pwd_chg_date;
