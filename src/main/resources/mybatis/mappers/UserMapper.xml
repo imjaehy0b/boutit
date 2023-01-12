@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.jscd.boutit.dao.UserDao">
+<mapper namespace="com.jscd.boutit.user.dao.UserDao">
 
     <!--    -->
     <select id="userCount" resultType="Integer">
@@ -10,17 +10,17 @@
     </select>
 
     <!--  이메일 & 비번 일치 확인  -->
-    <select id="selectUser" parameterType="com.jscd.boutit.domain.UserDto" resultType="com.jscd.boutit.domain.UserDto">
+    <select id="selectUser" parameterType="com.jscd.boutit.user.domain.UserDto" resultType="com.jscd.boutit.user.domain.UserDto">
         select * from userDto where email = #{email} and pwd = #{pwd};
     </select>
 
     <!--  이메일로 찾기  -->
-    <select id="selectUserByEmail" parameterType="com.jscd.boutit.domain.UserDto" resultType="com.jscd.boutit.domain.UserDto">
+    <select id="selectUserByEmail" parameterType="com.jscd.boutit.user.domain.UserDto" resultType="com.jscd.boutit.user.domain.UserDto">
         select * from userDto where email = #{email};
     </select>
 
     <!--  테스트용 전체값 입력  -->
-    <insert id="insertUser" parameterType="com.jscd.boutit.domain.UserDto">
+    <insert id="insertUser" parameterType="com.jscd.boutit.user.domain.UserDto">
         insert into userDto (id, email, pwd, name, nickname, birth, phone, signup_date, login_date, pwd_chg_date, state,
                           in_date, in_user, up_date, up_user)
         values (#{id}, #{email}, #{pwd}, #{name}, #{nickname}, #{birth}, #{phone}, #{signup_date}, #{login_date},

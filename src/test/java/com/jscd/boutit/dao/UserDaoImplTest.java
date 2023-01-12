@@ -1,6 +1,7 @@
 package com.jscd.boutit.dao;
 
-import com.jscd.boutit.domain.UserDto;
+import com.jscd.boutit.user.dao.UserDao;
+import com.jscd.boutit.user.domain.UserDto;
 import org.assertj.core.util.DateUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
