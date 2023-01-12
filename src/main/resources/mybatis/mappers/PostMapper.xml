@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.jscd.boutit.post.dao.PostDao">
+<!--전체 게시글 개수-->
+    <select id="postCount" resultType="int">
+        select count(*) from user_post
+    </select>
+    
+<!--게시글 목록-->
+    <select id="postList">
+        select * from user_post order by p_id DESC
+    </select>
+    
+<!--게시글 상세-->
+    <select id="postDetail" parameterType="int" resultType="">
+        select * from user_post where p_id = #{p_id}
+    </select>
+
+<!--게시글 작성-->
+    <insert id="postInsert" parameterType="">
+        insert into user_post (id,p_cotnet,prd_tag,hash_tag,p_wrt_date)
+    </insert>
+
+<!--게시글 조회수 증가-->
+    <update id="postViewCount" parameterType="int">
+        update user_post set p_view_cnt = p_view_cnt + 1 where p_id = #{p_id}
+    </update>
+
+<!--게시글 수정-->
+    <update id="postUpdate" parameterType="">
+        update user_post set p_content = #{p_content}, prd_tag = #{prd_tag},
+                            hash_tag = #{hashtag}, p_up_date = #{p_up_date}
+    </update>
+
+<!--게시글 삭제-->
+
+
+
+
+</mapper>
